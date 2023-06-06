@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Temperature Converter</title>
+  <link rel="stylesheet" href="tempconvertor.css">
+  
+</head>
+<body>
+  <h1>Temperature Converter</h1>
+  <div class="converter">
+    <div class="input-group">
+      <label>Celsius:</label>
+      <input type="number" id="celsiusInput">
+    </div>
+    <div class="input-group">
+      <label>Fahrenheit:</label>
+      <input type="number" id="fahrenheitInput">
+    </div>
+    <div class="input-group">
+      <label>Kelvin:</label>
+      <input type="number" id="kelvinInput">
+    </div>
+    <div class="input-group">
+      <button onclick="convertTemperature()">Convert</button>
+    </div>
+    
+  </div>
+
+  <script>
+    function convertTemperature() {
+      var celsius = document.getElementById('celsiusInput').value;
+      var fahrenheit = document.getElementById('fahrenheitInput').value;
+      var kelvin = document.getElementById('kelvinInput').value;
+
+      if (celsius !== '') {
+        fahrenheit = parseFloat(celsius) * 9 / 5 + 32;
+        kelvin = parseFloat(celsius) + 273.15;
+        document.getElementById('fahrenheitInput').value = fahrenheit.toFixed(2);
+        document.getElementById('kelvinInput').value = kelvin.toFixed(2);
+      } else if (fahrenheit !== '') {
+        celsius = (parseFloat(fahrenheit) - 32) * 5 / 9;
+        kelvin = (parseFloat(fahrenheit) + 459.67) * 5 / 9;
+        document.getElementById('celsiusInput').value = celsius.toFixed(2);
+        document.getElementById('kelvinInput').value = kelvin.toFixed(2);
+      } else if (kelvin !== '') {
+        celsius = parseFloat(kelvin) - 273.15;
+        fahrenheit = parseFloat(kelvin) * 9 / 5 - 459.67;
+        document.getElementById('celsiusInput').value = celsius.toFixed(2);
+        document.getElementById('fahrenheitInput').value = fahrenheit.toFixed(2);
+      }
+    }
+  </script>
+</body>
+</html>
